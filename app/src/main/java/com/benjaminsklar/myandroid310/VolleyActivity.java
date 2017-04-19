@@ -79,6 +79,6 @@ public class VolleyActivity extends AppCompatActivity {
                 });
 
         requestQueue.add(imageRequest);
-        
+
     }
 }

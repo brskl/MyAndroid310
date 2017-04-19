@@ -22,4 +22,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, VolleyActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.uxFacebook)
+    public void onFacebook() {
+        Intent intent = new Intent(this, FacebookActivity.class);
+        startActivity(intent);
+    }
+
 }
