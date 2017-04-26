@@ -3,6 +3,7 @@
     package="com.benjaminsklar.myandroid310">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +19,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".VolleyActivity" />
-        <activity android:name=".FacebookActivity"></activity>
+        <activity android:name=".FacebookActivity" />
+
+        <receiver
+            android:name=".ConnectivityReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
