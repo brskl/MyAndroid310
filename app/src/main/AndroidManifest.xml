@@ -25,8 +25,6 @@
             android:name="android.app.default_searchable"
             android:value=".SearchableActivity" />
 
-
-
         <receiver
             android:name=".ConnectivityReceiver"
             android:enabled="true"
@@ -37,16 +35,24 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".SearchableActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="@string/title_activity_searchable">
+        <activity
+            android:name=".SearchableActivity"
+            android:label="@string/title_activity_searchable"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
 
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
+
+        <provider
+            android:name=".MySuggestionProvider"
+            android:authorities="com.benjaminsklar.myandroid310.MySuggestionProvider"
+            android:enabled="true"
+            android:exported="true"></provider>
     </application>
 
 </manifest>
