@@ -23,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @OnClick(R.id.uxSearch)
+    public void onSearch() {
+        onSearchRequested();
+    }
+
     @OnClick(R.id.uxFacebook)
     public void onFacebook() {
         Intent intent = new Intent(this, FacebookActivity.class);
