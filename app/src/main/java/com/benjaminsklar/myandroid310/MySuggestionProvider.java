@@ -1,15 +1,17 @@
 package com.benjaminsklar.myandroid310;
 
+import android.app.SearchManager;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
+import android.provider.BaseColumns;
 
 public class MySuggestionProvider extends ContentProvider {
 
     String [] data;
-    public static final String [] columnNames = { "_ID", "SUGGEST_COLUMN_TEXT_1"};
+    public static final String [] columnNames = {BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1};
     public MySuggestionProvider() {
     }
 
