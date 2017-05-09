@@ -18,12 +18,15 @@ public class SearchableActivity extends AppCompatActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query;
             query = intent.getStringExtra(SearchManager.QUERY);
-            if (query == null) {
-                query = intent.getDataString();
-            }
+
             //doMySearch(query);
             Toast.makeText(this, "Query:["+query+"]", Toast.LENGTH_LONG).show();
+        } else {
+            if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+                String view;
+                view = intent.getDataString();
+                Toast.makeText(this, "View:["+view+"]", Toast.LENGTH_LONG).show();
+            }
         }
-
     }
 }
