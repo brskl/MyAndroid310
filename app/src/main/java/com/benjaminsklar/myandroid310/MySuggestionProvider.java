@@ -3,9 +3,13 @@ package com.benjaminsklar.myandroid310;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.net.Uri;
 
 public class MySuggestionProvider extends ContentProvider {
+
+    String [] data;
+    public static final String [] columnNames = { "_ID", "SUGGEST_COLUMN_TEXT_1"};
     public MySuggestionProvider() {
     }
 
@@ -30,15 +34,30 @@ public class MySuggestionProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        // TODO: Implement this to initialize your content provider on startup.
-        return false;
+        data = getContext().getResources().getStringArray(R.array.states);
+        return true;
     }
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
-        // TODO: Implement this to handle query requests from clients.
-        throw new UnsupportedOperationException("Not yet implemented");
+        MatrixCursor cursor = new MatrixCursor(columnNames);
+        String searchPrefix = uri.getLastPathSegment();
+
+        int i;
+        String stateData;
+
+        for (i = 0; i < data.length; i++) {
+            stateData = data[i];
+            String statePrefix = stateData.substring(0, searchPrefix.length());
+            if (statePrefix.equalsIgnoreCase(searchPrefix)) {
+                MatrixCursor.RowBuilder rowBuilder = cursor.newRow();
+                rowBuilder.add(i);
+                rowBuilder.add(stateData);
+            }
+        }
+
+        return cursor;
     }
 
     @Override
