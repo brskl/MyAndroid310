@@ -11,7 +11,7 @@ import android.provider.BaseColumns;
 public class MySuggestionProvider extends ContentProvider {
 
     String [] data;
-    public static final String [] columnNames = {BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1};
+    public static final String [] columnNames = {BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1, SearchManager.SUGGEST_COLUMN_INTENT_DATA};
     public MySuggestionProvider() {
     }
 
@@ -55,6 +55,7 @@ public class MySuggestionProvider extends ContentProvider {
             if (statePrefix.equalsIgnoreCase(searchPrefix)) {
                 MatrixCursor.RowBuilder rowBuilder = cursor.newRow();
                 rowBuilder.add(i);
+                rowBuilder.add(stateData);
                 rowBuilder.add(stateData);
             }
         }

@@ -16,7 +16,11 @@ public class SearchableActivity extends AppCompatActivity {
         // Get the intent, verify the action and get the query
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
+            String query;
+            query = intent.getStringExtra(SearchManager.QUERY);
+            if (query == null) {
+                query = intent.getDataString();
+            }
             //doMySearch(query);
             Toast.makeText(this, "Query:["+query+"]", Toast.LENGTH_LONG).show();
         }
